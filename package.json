@@ -1,13 +1,13 @@
 {
-  "name": "nikechan-blog",
+  "name": "nikechan-controller",
   "type": "module",
   "scripts": {
     "build:css": "tailwindcss -i ./src/styles/globals.css -o ./public/static/styles/globals.css",
     "watch:css": "tailwindcss -i ./src/styles/globals.css -o ./public/static/styles/globals.css --watch",
-    "dev": "concurrently \"npm run watch:css\" \"vite\"",
-    "build": "npm run build:css && vite build",
+    "dev": "concurrently \"bun run watch:css\" \"bunx --bun vite\"",
+    "build": "bun run build:css && bunx --bun vite build",
     "preview": "wrangler pages dev",
-    "deploy": "npm run build && wrangler pages deploy"
+    "deploy": "bun run build && wrangler pages deploy"
   },
   "dependencies": {
     "@hono/node-server": "^1.13.7",
@@ -20,6 +20,7 @@
     "@cloudflare/workers-types": "^4.20240529.0",
     "@hono/vite-build": "^1.0.0",
     "@hono/vite-dev-server": "^0.16.0",
+    "@rollup/rollup-darwin-x64": "^4.34.7",
     "@tailwindcss/aspect-ratio": "^0.4.2",
     "@tailwindcss/typography": "^0.5.15",
     "@types/better-sqlite3": "^7.6.12",

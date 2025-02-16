@@ -2,12 +2,6 @@ import { Hono } from 'hono'
 import { serveStatic } from '@hono/node-server/serve-static'
 import { renderer } from './renderer'
 import { Layout } from './components/Layout'
-import { Model } from './components/Model'
-import { Gallery } from './components/Gallery'
-import { Blog } from './components/Blog'
-import { BlogDetail } from './components/BlogDetail'
-import { MonthlySummary } from './components/MonthlySummary'
-import { About } from './components/About'
 import { Sessions } from './components/Sessions'
 import { SessionDetail } from './components/SessionDetail'
 
@@ -25,55 +19,20 @@ app.get('/', (c) => {
 
   return c.render(
     <Layout>
-      <Model />
-      <Gallery />
+      <Sessions />
     </Layout>,
-    { title: "Nike Portfolio | Gallery" } 
+    { title: "Nike Portfolio | Sessions" } 
   )
 })
 
 // Blog page
-app.get('/blog', async (c) => {
+app.get('/sessions', async (c) => {
   return c.render(
     <Layout>
       {/* @ts-expect-error Server Component */}
-      <Blog />
+      <Sessions />
     </Layout>,
-    { title: "Nike Portfolio | Blog" }
-  )
-})
-
-// Blog detail page
-app.get('/blog/:id', async (c) => {
-  const id = c.req.param('id')
-  return c.render(
-    <Layout>
-      {/* @ts-expect-error Server Component */}
-      <BlogDetail id={id} />
-    </Layout>,
-    { title: "Nike Portfolio | Blog Detail" }
-  )
-})
-
-// Blog monthly summary page
-app.get('/blog/summary/:yearMonth', async (c) => {
-  const yearMonth = c.req.param('yearMonth')
-  return c.render(
-    <Layout>
-      {/* @ts-expect-error Server Component */}
-      <MonthlySummary yearMonth={yearMonth} />
-    </Layout>,
-    { title: "Nike Portfolio | Monthly Summary" }
-  )
-})
-
-// About me page
-app.get('/about', (c) => {
-  return c.render(
-    <Layout>
-      <About />
-    </Layout>,
-    { title: "Nike Portfolio | About" }
+    { title: "Nike Portfolio | Sessions" }
   )
 })
 
